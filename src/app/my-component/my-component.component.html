@@ -1,0 +1,35 @@
+<!-- This HTML has content to display participant details -->
+
+<h1>Session-17, Assignment-1</h1>
+<br>
+<table class="table table-bordered">
+  <!-- Loop through list of participants -->
+  <thead>
+    <tr class="embossed-heavy"><h3>Participant Details</h3></tr>
+  </thead>
+  <tbody>
+    <!-- Here we use the "AS" keyword for the index -->
+    <tr *ngFor="let contestant of contestants; index as i" class="embossed-heavy">
+      <!-- Display that contestant participation is valid if their age is 16 or above -->
+      <!-- This is the "IF" part -->
+      <h4 *ngIf="contestant.age >= 16; else juniors">
+        <td class="ind">{{i+1}}</td>
+        <td>{{contestant.name}}</td>
+        <td>Age: {{contestant.age}}</td>
+        <td>Valid Participant</td>
+      </h4>
+      <!-- Display in below format if contestant is below permissible age limit (i.e., 16 years) -->
+      <!-- This is the "ELSE" part -->
+      <ng-template #juniors>
+        <h4>
+          <td class="ind">{{i+1}}</td>
+          <td>{{contestant.name}}</td>
+          <td>Age: {{contestant.age}}</td>
+          <td>
+            Participant below age limit
+          </td>
+        </h4>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
